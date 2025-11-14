@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h3>Reservas</h3>
+<table class="table">
+  <thead><tr><th>ID</th><th>Fecha</th><th>Horario</th><th>Cliente</th><th>Cancha</th></tr></thead>
+  <tbody>
+    {% for r in reservas %}
+      <tr>
+        <td>{{ r.id_reserva }}</td>
+        <td>{{ r.fecha }}</td>
+        <td>{{ r.hora_inicio }} - {{ r.hora_fin }}</td>
+        <td>{{ r.cliente.nombre }} {{ r.cliente.apellido }}</td>
+        <td>{{ r.cancha.nombre }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

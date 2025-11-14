@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Nueva Cancha{% endblock %}
+{% block content %}
+<div class="container mt-4">
+  <h2>Registrar nueva cancha</h2>
+  <form method="POST">
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="nombre" name="nombre" required>
+    </div>
+    <div class="mb-3">
+      <label for="tipo" class="form-label">Tipo</label>
+      <input type="text" class="form-control" id="tipo" name="tipo" placeholder="Ej: Fútbol, Baloncesto" required>
+    </div>
+    <div class="mb-3">
+      <label for="ubicacion" class="form-label">Ubicación</label>
+      <input type="text" class="form-control" id="ubicacion" name="ubicacion" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a href="{{ url_for('listar_canchas') }}" class="btn btn-secondary">Cancelar</a>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="row">
+  <div class="col-md-6">
+    <h3>Reservar cancha</h3>
+    <form action="{{ url_for('reservar') }}" method="post">
+      <div class="mb-2">
+        <label>Cliente (ID)</label>
+        <input class="form-control" name="cliente_id" type="number" required placeholder="Ej: 1">
+        <div class="form-text">Para ver los IDs vaya a la sección Clientes.</div>
+      </div>
+      <div class="mb-2">
+        <label>Cancha</label>
+        <select class="form-select" name="cancha_id">
+          {% for c in canchas %}
+            <option value="{{ c.id_cancha }}">{{ c.nombre }} - {{ c.tipo }} ({{ c.ubicacion }})</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="mb-2">
+        <label>Fecha</label>
+        <input class="form-control" name="fecha" type="date" required>
+      </div>
+      <div class="mb-2">
+        <label>Hora inicio</label>
+        <input class="form-control" name="hora_inicio" type="time" required>
+      </div>
+      <div class="mb-2">
+        <label>Hora fin</label>
+        <input class="form-control" name="hora_fin" type="time" required>
+      </div>
+      <button class="btn btn-primary">Reservar</button>
+    </form>
+  </div>
+  <div class="col-md-6">
+    <h3>Canchas disponibles</h3>
+    <ul class="list-group">
+      {% for c in canchas %}
+        <li class="list-group-item">
+          <strong>{{ c.nombre }}</strong> — {{ c.tipo }} — {{ c.ubicacion }} <br>
+          <small>ID: {{ c.id_cancha }}</small>
+        </li>
+      {% endfor %}
+    </ul>
+    <hr>
+    <a class="btn btn-outline-secondary mt-3" href="{{ url_for('backup') }}">Crear backup (descargar .sql)</a>
+  </div>
+</div>
+{% endblock %}

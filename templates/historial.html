@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h3>Historial de reservas — {{ cliente.nombre }} {{ cliente.apellido }}</h3>
+<table class="table">
+  <thead><tr><th>Fecha</th><th>Horario</th><th>Cancha</th></tr></thead>
+  <tbody>
+    {% for r in reservas %}
+      <tr>
+        <td>{{ r.fecha }}</td>
+        <td>{{ r.hora_inicio }} - {{ r.hora_fin }}</td>
+        <td>{{ r.cancha.nombre }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

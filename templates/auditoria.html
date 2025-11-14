@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h3>Auditoría (últimos 200)</h3>
+<table class="table table-sm">
+  <thead><tr><th>Fecha</th><th>Usuario</th><th>Acción</th><th>Resultado</th><th>IP</th></tr></thead>
+  <tbody>
+    {% for l in logs %}
+      <tr>
+        <td>{{ l.fecha }}</td>
+        <td>{{ l.usuario }}</td>
+        <td>{{ l.accion }}</td>
+        <td>{{ l.resultado }}</td>
+        <td>{{ l.ip }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

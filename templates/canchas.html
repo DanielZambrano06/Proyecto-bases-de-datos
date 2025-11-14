@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h3>Canchas</h3>
+<a href="{{ url_for('nueva_cancha') }}" class="btn btn-success mb-3">➕ Nueva Cancha</a>
+<table class="table table-hover">
+  <thead><tr><th>ID</th><th>Nombre</th><th>Tipo</th><th>Ubicación</th></tr></thead>
+  <tbody>
+    {% for c in canchas %}
+      <tr>
+        <td>{{ c.id_cancha }}</td>
+        <td>{{ c.nombre }}</td>
+        <td>{{ c.tipo }}</td>
+        <td>{{ c.ubicacion }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

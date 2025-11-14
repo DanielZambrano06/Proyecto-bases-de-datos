@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h3>Clientes</h3>
+<a href="{{ url_for('nuevo_cliente') }}" class="btn btn-success mb-3">➕ Nuevo Cliente</a>
+<table class="table table-striped">
+  <thead><tr><th>ID</th><th>Nombre</th><th>Teléfono</th><th>Correo</th><th>Acciones</th></tr></thead>
+  <tbody>
+    {% for cl in clientes %}
+      <tr>
+        <td>{{ cl.id_cliente }}</td>
+        <td>{{ cl.nombre }} {{ cl.apellido }}</td>
+        <td>{{ cl.telefono }}</td>
+        <td>{{ cl.correo }}</td>
+        <td><a class="btn btn-sm btn-primary" href="{{ url_for('historial_cliente', id_cliente=cl.id_cliente) }}">Ver historial</a></td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
